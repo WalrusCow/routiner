@@ -1,9 +1,12 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import ca.wmcd.routiner.R;
 
 public class MainActivity extends Activity {
 
@@ -27,7 +30,11 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        switch (id) {
+        case R.id.action_routine:
+            // Start routine activity
+            Intent intent = new Intent(this, RoutineActivity.class);
+            startActivity(intent);
             return true;
         }
 
