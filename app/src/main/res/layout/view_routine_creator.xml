@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="When would you like to?"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_sunday"
+            style="@style/WeekdaySelector"
+            app:weekday="sunday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_monday"
+            style="@style/WeekdaySelector"
+            app:weekday="monday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_tuesday"
+            style="@style/WeekdaySelector"
+            app:weekday="tuesday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_wednesday"
+            style="@style/WeekdaySelector"
+            app:weekday="wednesday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_thursday"
+            style="@style/WeekdaySelector"
+            app:weekday="thursday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_friday"
+            style="@style/WeekdaySelector"
+            app:weekday="friday"/>
+
+        <ca.wmcd.routiner.ui.views.WeekdaySelector
+            android:id="@+id/weekday_saturday"
+            style="@style/WeekdaySelector"
+            app:weekday="saturday"/>
+    </LinearLayout>
+</merge>
