@@ -8,39 +8,10 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <CheckBox
+    <ca.wmcd.routiner.ui.views.WeekdaySelector
         android:layout_width="wrap_content"
+        style="@style/WeekdaySelector"
         android:layout_height="wrap_content"
         android:text="SUN"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MON"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TUE"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WED"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="THU"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FRI"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SAT"/>
 
 </LinearLayout>
