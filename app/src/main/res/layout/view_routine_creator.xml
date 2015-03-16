@@ -49,4 +49,11 @@
             style="@style/WeekdaySelector"
             app:weekday="saturday"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/every_n_days"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Every"
+        />
 </merge>

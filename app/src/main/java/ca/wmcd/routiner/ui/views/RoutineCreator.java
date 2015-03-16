@@ -9,6 +9,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectViews;
+import butterknife.OnClick;
 import ca.wmcd.routiner.R;
 
 /**
@@ -43,5 +44,12 @@ public class RoutineCreator extends LinearLayout {
     private void init(Context context) {
         inflate(context, R.layout.view_routine_creator, this);
         ButterKnife.inject(this, this);
+    }
+
+    @OnClick(R.id.every_n_days)
+    public void everyDaysClick() {
+        for (View v : weekdayViews) {
+            v.setEnabled(!v.isEnabled());
+        }
     }
 }

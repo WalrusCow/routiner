@@ -46,6 +46,9 @@ public class WeekdaySelector extends TextView {
         int weekDay = typedArray.getInt(R.styleable.WeekdaySelector_weekday, 0);
         setText(shortText[weekDay]);
         typedArray.recycle();
+
+        // Default doesn't work in XML
+        setSelected(true);
     }
 
     @OnClick
