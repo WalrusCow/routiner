@@ -20,6 +20,8 @@
         <activity android:name=".ui.activities.RoutineActivity"
                   android:label="New Routine"
                   android:parentActivityName=".ui.activities.MainActivity"/>
+
+        <service android:name=".RoutineNotifier" android:label="Routine Notifier"/>
     </application>
 
 </manifest>

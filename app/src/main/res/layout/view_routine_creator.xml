@@ -56,4 +56,10 @@
         android:layout_width="wrap_content"
         android:text="Every"
         />
+
+    <Button
+        android:id="@+id/clicky"
+        android:text="START SERVICE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </merge>
