@@ -1,4 +1,4 @@
-package ca.wmcd.routiner.ui.views;
+package ca.wmcd.routiner;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,8 +14,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectViews;
 import butterknife.OnClick;
-import ca.wmcd.routiner.R;
-import ca.wmcd.routiner.RoutineNotifier;
 
 /**
  * Created by WalrusCow on 3/15/15.
@@ -52,19 +50,13 @@ public class RoutineCreator extends LinearLayout {
         ButterKnife.inject(this, this);
     }
 
-    @OnClick(R.id.every_n_days)
-    public void everyDaysClick() {
-        for (View v : weekdayViews) {
-            v.setEnabled(!v.isEnabled());
-        }
-    }
+    @OnClick(R.id.create_routine)
+    public void createRoutine() {
 
-    @OnClick(R.id.clicky)
-    public void clickyClick() {
         Context context = getContext();
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent intent = PendingIntent.getService(
-                context, 0, new Intent(context, RoutineNotifier.class), 0);
+                context, 1, new Intent(context, RoutineNotifier.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
         // Five seconds from now
         long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;

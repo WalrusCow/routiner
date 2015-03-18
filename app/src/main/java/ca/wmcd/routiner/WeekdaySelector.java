@@ -1,4 +1,4 @@
-package ca.wmcd.routiner.ui.views;
+package ca.wmcd.routiner;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -2,11 +2,31 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/routine_title"
+            android:text="@string/routine_goal_label"/>
+
+        <EditText
+            android:id="@+id/routine_title"
+            android:hint="eat tomatoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="When would you like to?"/>
+        android:text="@string/routine_time_weekdays"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,52 +34,46 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_sunday"
             style="@style/WeekdaySelector"
             app:weekday="sunday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_monday"
             style="@style/WeekdaySelector"
             app:weekday="monday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_tuesday"
             style="@style/WeekdaySelector"
             app:weekday="tuesday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_wednesday"
             style="@style/WeekdaySelector"
             app:weekday="wednesday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_thursday"
             style="@style/WeekdaySelector"
             app:weekday="thursday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_friday"
             style="@style/WeekdaySelector"
             app:weekday="friday"/>
 
-        <ca.wmcd.routiner.ui.views.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelector
             android:id="@+id/weekday_saturday"
             style="@style/WeekdaySelector"
             app:weekday="saturday"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/every_n_days"
+        android:id="@+id/create_routine"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Every"
+        android:text="@string/routine_create_button_text"
         />
-
-    <Button
-        android:id="@+id/clicky"
-        android:text="START SERVICE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 </merge>

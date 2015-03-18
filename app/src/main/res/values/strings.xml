@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Routiner</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_new_routine">New Routine</string>
+    <string name="routine_goal_label">I want to</string>
+    <string name="routine_time_weekdays">on these days</string>
+    <string name="routine_create_button_text">Finished</string>
 </resources>

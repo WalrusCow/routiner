@@ -1,12 +1,10 @@
-package ca.wmcd.routiner.ui.activities;
+package ca.wmcd.routiner;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import ca.wmcd.routiner.R;
 
 public class MainActivity extends Activity {
 

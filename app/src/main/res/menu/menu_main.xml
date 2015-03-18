@@ -4,5 +4,5 @@
     <item android:id="@+id/action_routine"
           android:icon="@drawable/ic_launcher"
           android:showAsAction="ifRoom"
-          android:title="New Routine"/>
+          android:title="@string/action_new_routine"/>
 </menu>

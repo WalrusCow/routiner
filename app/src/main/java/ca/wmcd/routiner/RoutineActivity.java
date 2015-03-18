@@ -1,4 +1,4 @@
-package ca.wmcd.routiner.ui.activities;
+package ca.wmcd.routiner;
 
 import android.app.Activity;
 import android.os.Bundle;
