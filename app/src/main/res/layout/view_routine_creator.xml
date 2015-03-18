@@ -10,11 +10,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:labelFor="@+id/routine_title"
+            android:labelFor="@+id/routine_goal_input"
             android:text="@string/routine_goal_label"/>
 
         <EditText
-            android:id="@id/routine_title"
+            android:id="@id/routine_goal_input"
             android:hint="eat tomatoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

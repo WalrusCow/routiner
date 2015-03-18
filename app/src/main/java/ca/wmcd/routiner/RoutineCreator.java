@@ -5,13 +5,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.InjectViews;
 import butterknife.OnClick;
 
@@ -23,7 +24,9 @@ public class RoutineCreator extends LinearLayout {
     @InjectViews(
             {R.id.weekday_sunday, R.id.weekday_monday, R.id.weekday_tuesday, R.id.weekday_wednesday,
              R.id.weekday_thursday, R.id.weekday_friday, R.id.weekday_saturday})
-    List<View> weekdayViews;
+    List<WeekdaySelector> weekdayViews;
+
+    @InjectView(R.id.routine_goal_input) EditText goalInput;
 
     public RoutineCreator(Context context) {
         super(context);
@@ -52,6 +55,14 @@ public class RoutineCreator extends LinearLayout {
 
     @OnClick(R.id.create_routine)
     public void createRoutine() {
+
+        String goalString = goalInput.getText().toString();
+        int b = 0;
+        for (WeekdaySelector weekdayView : weekdayViews) {
+            if (weekdayView.isSelected()) {
+                b |= 1 << weekdayView.weekday;
+            }
+        }
 
         Context context = getContext();
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

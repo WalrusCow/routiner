@@ -7,13 +7,14 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import ca.wmcd.routiner.R;
 
 /**
  * Created by WalrusCow on 3/15/15.
  */
 public class WeekdaySelector extends TextView {
     private static String shortText[] = {"S", "M", "T", "W", "T", "F", "S"};
+    public int weekday;
+
     public WeekdaySelector(Context context) {
         super(context);
         init(context, null);
@@ -43,8 +44,8 @@ public class WeekdaySelector extends TextView {
 
         TypedArray typedArray =
                 context.obtainStyledAttributes(attrs, R.styleable.WeekdaySelector, 0, 0);
-        int weekDay = typedArray.getInt(R.styleable.WeekdaySelector_weekday, 0);
-        setText(shortText[weekDay]);
+        weekday = typedArray.getInt(R.styleable.WeekdaySelector_weekday, 0);
+        setText(shortText[weekday]);
         typedArray.recycle();
 
         // Default doesn't work in XML
