@@ -4,17 +4,17 @@
 
     <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:labelFor="@id/routine_title"
+            android:labelFor="@+id/routine_title"
             android:text="@string/routine_goal_label"/>
 
         <EditText
-            android:id="@+id/routine_title"
+            android:id="@id/routine_title"
             android:hint="eat tomatoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
