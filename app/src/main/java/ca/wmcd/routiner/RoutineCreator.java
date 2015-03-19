@@ -55,16 +55,20 @@ public class RoutineCreator extends LinearLayout {
 
     @OnClick(R.id.create_routine)
     public void createRoutine() {
-
-        String goalString = goalInput.getText().toString();
-        int b = 0;
+        Routine routine = new Routine();
+        routine.weekdayMask = 0;
         for (WeekdaySelector weekdayView : weekdayViews) {
             if (weekdayView.isSelected()) {
-                b |= 1 << weekdayView.weekday;
+                routine.weekdayMask |= 1 << weekdayView.weekday;
             }
         }
+        routine.timeMin = 60 * 8;
+        routine.goal = goalInput.getText().toString();
 
         Context context = getContext();
+
+        RoutineDatabase.save(context, routine);
+
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent intent = PendingIntent.getService(
                 context, 1, new Intent(context, RoutineNotifier.class), PendingIntent.FLAG_CANCEL_CURRENT);
