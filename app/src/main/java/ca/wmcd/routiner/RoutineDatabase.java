@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class RoutineDatabase {
 
         @Override
         protected List<Routine> doInBackground(Context... contexts) {
-            Context context = contexts[1];
+            Context context = contexts[0];
             SQLiteDatabase db = new OpenHelper(context).getReadableDatabase();
 
             Cursor cursor = db.query(ROUTINES_TABLE_NAME, null, null, null, null, null, null);
@@ -79,11 +80,15 @@ public class RoutineDatabase {
                     routine.dayInterval = cursor.getInt(dayIntervalKey);
                 routine.goal = cursor.getString(goalKey);
                 routine.timeMin = cursor.getInt(timeKey);
+                routines.add(routine);
                 cursor.moveToNext();
             }
 
+            ArrayList<Routine> routineArrayList = new ArrayList<>(routines.size());
+            routineArrayList.addAll(routines);
+
             cursor.close();
-            return routines;
+            return routineArrayList;
         }
 
         @Override
