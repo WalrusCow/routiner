@@ -2,8 +2,14 @@ package ca.wmcd.routiner;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
+
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by WalrusCow on 3/18/15. Class to house information about the routine database.
@@ -33,6 +39,60 @@ public class RoutineDatabase {
     public static void save(Context context, Routine routine) {
         Thread saveThread = new RoutineSaveThread(context, routine);
         saveThread.start();
+    }
+
+    public static interface GetRoutinesCallback {
+        public void call(List<Routine> routines);
+    }
+
+    public static void getRoutines(Context context, GetRoutinesCallback callback) {
+        GetRoutinesTask getTask = new GetRoutinesTask(callback);
+        getTask.execute(context);
+    }
+
+    private static class GetRoutinesTask extends AsyncTask<Context, Void, List<Routine>> {
+        private final WeakReference<GetRoutinesCallback> callbackWeakReference;
+
+        public GetRoutinesTask(GetRoutinesCallback callback) {
+            super();
+            callbackWeakReference = new WeakReference<>(callback);
+        }
+
+        @Override
+        protected List<Routine> doInBackground(Context... contexts) {
+            Context context = contexts[1];
+            SQLiteDatabase db = new OpenHelper(context).getReadableDatabase();
+
+            Cursor cursor = db.query(ROUTINES_TABLE_NAME, null, null, null, null, null, null);
+            cursor.moveToFirst();
+            int goalKey = cursor.getColumnIndex(ROUTINES_KEY_GOAL);
+            int weekdaysKey = cursor.getColumnIndex(ROUTINES_KEY_WEEKDAYS);
+            int dayIntervalKey = cursor.getColumnIndex(ROUTINES_KEY_DAY_INTERVAL);
+            int timeKey = cursor.getColumnIndex(ROUTINES_KEY_TIME);
+
+            LinkedList<Routine> routines = new LinkedList<>();
+            while (!cursor.isAfterLast()) {
+                Routine routine = new Routine();
+                if (weekdaysKey != -1)
+                    routine.weekdayMask = cursor.getInt(weekdaysKey);
+                else
+                    routine.dayInterval = cursor.getInt(dayIntervalKey);
+                routine.goal = cursor.getString(goalKey);
+                routine.timeMin = cursor.getInt(timeKey);
+                cursor.moveToNext();
+            }
+
+            cursor.close();
+            return routines;
+        }
+
+        @Override
+        protected void onPostExecute(List<Routine> routines) {
+            GetRoutinesCallback callback = callbackWeakReference.get();
+            if (callback != null) {
+                callback.call(routines);
+            }
+        }
     }
 
     private static class RoutineSaveThread extends Thread {

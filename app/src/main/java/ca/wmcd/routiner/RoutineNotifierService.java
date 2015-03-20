@@ -10,8 +10,8 @@ import android.support.v4.app.NotificationCompat;
  * Created by WalrusCow on 3/15/15.
  * Service to send notifications when a routine is due.
  */
-public class RoutineNotifier extends Service {
-    public RoutineNotifier() {
+public class RoutineNotifierService extends Service {
+    public RoutineNotifierService() {
         super();
     }
 

@@ -21,7 +21,7 @@
                   android:label="New Routine"
                   android:parentActivityName=".MainActivity"/>
 
-        <service android:name=".RoutineNotifier" android:label="Routine Notifier"/>
+        <service android:name=".RoutineNotifierService" android:label="Routine Notifier"/>
     </application>
 
 </manifest>

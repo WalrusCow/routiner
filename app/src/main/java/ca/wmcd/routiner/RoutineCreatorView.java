@@ -20,30 +20,31 @@ import butterknife.OnClick;
  * Created by WalrusCow on 3/15/15.
  * View to create a new routine
  */
-public class RoutineCreator extends LinearLayout {
+public class RoutineCreatorView extends LinearLayout {
     @InjectViews(
             {R.id.weekday_sunday, R.id.weekday_monday, R.id.weekday_tuesday, R.id.weekday_wednesday,
              R.id.weekday_thursday, R.id.weekday_friday, R.id.weekday_saturday})
-    List<WeekdaySelector> weekdayViews;
+    List<WeekdaySelectorView> weekdayViews;
 
     @InjectView(R.id.routine_goal_input) EditText goalInput;
 
-    public RoutineCreator(Context context) {
+    public RoutineCreatorView(Context context) {
         super(context);
         init(context);
     }
 
-    public RoutineCreator(Context context, AttributeSet attrs) {
+    public RoutineCreatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public RoutineCreator(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoutineCreatorView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
-    public RoutineCreator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RoutineCreatorView(Context context, AttributeSet attrs, int defStyleAttr,
+                              int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
@@ -57,7 +58,7 @@ public class RoutineCreator extends LinearLayout {
     public void createRoutine() {
         Routine routine = new Routine();
         routine.weekdayMask = 0;
-        for (WeekdaySelector weekdayView : weekdayViews) {
+        for (WeekdaySelectorView weekdayView : weekdayViews) {
             if (weekdayView.isSelected()) {
                 routine.weekdayMask |= 1 << weekdayView.weekday;
             }
@@ -71,7 +72,7 @@ public class RoutineCreator extends LinearLayout {
 
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent intent = PendingIntent.getService(
-                context, 1, new Intent(context, RoutineNotifier.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                context, 1, new Intent(context, RoutineNotifierService.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
         // Five seconds from now
         long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;

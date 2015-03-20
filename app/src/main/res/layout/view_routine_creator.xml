@@ -34,37 +34,37 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_sunday"
             style="@style/WeekdaySelector"
             app:weekday="sunday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_monday"
             style="@style/WeekdaySelector"
             app:weekday="monday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_tuesday"
             style="@style/WeekdaySelector"
             app:weekday="tuesday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_wednesday"
             style="@style/WeekdaySelector"
             app:weekday="wednesday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_thursday"
             style="@style/WeekdaySelector"
             app:weekday="thursday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_friday"
             style="@style/WeekdaySelector"
             app:weekday="friday"/>
 
-        <ca.wmcd.routiner.WeekdaySelector
+        <ca.wmcd.routiner.WeekdaySelectorView
             android:id="@+id/weekday_saturday"
             style="@style/WeekdaySelector"
             app:weekday="saturday"/>

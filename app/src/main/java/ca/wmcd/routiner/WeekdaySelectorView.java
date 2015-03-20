@@ -11,26 +11,27 @@ import butterknife.OnClick;
 /**
  * Created by WalrusCow on 3/15/15.
  */
-public class WeekdaySelector extends TextView {
+public class WeekdaySelectorView extends TextView {
     private static String shortText[] = {"S", "M", "T", "W", "T", "F", "S"};
     public int weekday;
 
-    public WeekdaySelector(Context context) {
+    public WeekdaySelectorView(Context context) {
         super(context);
         init(context, null);
     }
 
-    public WeekdaySelector(Context context, AttributeSet attrs) {
+    public WeekdaySelectorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public WeekdaySelector(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WeekdaySelectorView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
 
-    public WeekdaySelector(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public WeekdaySelectorView(Context context, AttributeSet attrs, int defStyleAttr,
+                               int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
     }
@@ -43,8 +44,8 @@ public class WeekdaySelector extends TextView {
         }
 
         TypedArray typedArray =
-                context.obtainStyledAttributes(attrs, R.styleable.WeekdaySelector, 0, 0);
-        weekday = typedArray.getInt(R.styleable.WeekdaySelector_weekday, 0);
+                context.obtainStyledAttributes(attrs, R.styleable.WeekdaySelectorView, 0, 0);
+        weekday = typedArray.getInt(R.styleable.WeekdaySelectorView_weekday, 0);
         setText(shortText[weekday]);
         typedArray.recycle();
 

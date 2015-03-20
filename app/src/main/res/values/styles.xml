@@ -1,6 +1,5 @@
 <resources>
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-    </style>
+    <style name="AppTheme" parent="android:Theme.Material.Light"/>
 
     <style name="WeekdaySelector">
         <item name="android:layout_height">@dimen/weekday_selector_size</item>
