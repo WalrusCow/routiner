@@ -5,8 +5,11 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.InjectViews;
 import ca.wmcd.routiner.R;
 import ca.wmcd.routiner.data.Routine;
 
@@ -16,6 +19,11 @@ import ca.wmcd.routiner.data.Routine;
  */
 public class RoutineView extends RelativeLayout {
     @InjectView(R.id.routine_title_text) TextView routineTitleView;
+
+    @InjectViews(
+            {R.id.weekday_sunday, R.id.weekday_monday, R.id.weekday_tuesday, R.id.weekday_wednesday,
+             R.id.weekday_thursday, R.id.weekday_friday, R.id.weekday_saturday})
+    List<WeekdayCircleView> weekdayViews;
 
     public RoutineView(Context context) {
         super(context);
@@ -62,6 +70,14 @@ public class RoutineView extends RelativeLayout {
         String timeString = formatTimeString(routine.timeMin);
         String titleString = goal + " at " + timeString;
         routineTitleView.setText(titleString);
+        for (int i = 0; i < 7; ++i) {
+            if (routine.weekdaySelected(i)) {
+                weekdayViews.get(i).setSelected(true);
+            }
+            else {
+                weekdayViews.get(i).setSelected(false);
+            }
+        }
     }
 
     private void init() {

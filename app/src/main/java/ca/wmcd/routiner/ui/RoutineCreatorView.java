@@ -64,7 +64,7 @@ public class RoutineCreatorView extends LinearLayout {
         routine.weekdayMask = 0;
         for (WeekdaySelectorView weekdayView : weekdayViews) {
             if (weekdayView.isSelected()) {
-                routine.weekdayMask |= 1 << weekdayView.weekday;
+                routine.setWeekdaySelected(weekdayView.weekday, true);
             }
         }
         routine.timeMin = 60 * 8;

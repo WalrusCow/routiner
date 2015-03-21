@@ -24,4 +24,17 @@ public class Routine {
     // Time in minutes from midnight the routine is due
     // Could also be one of a few special values (see TIME_*)
     public int timeMin;
+
+    public boolean weekdaySelected(int i) {
+        return (weekdayMask != null) && ((weekdayMask & (1 << i)) != 0);
+    }
+
+    public void setWeekdaySelected(int i, boolean selected) {
+        if (selected) {
+            weekdayMask |= 1 << i;
+        }
+        else {
+            weekdayMask &= ~(1 << i);
+        }
+    }
 }
