@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.data;
 
 import android.content.ContentValues;
 import android.content.Context;

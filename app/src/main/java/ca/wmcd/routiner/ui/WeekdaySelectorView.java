@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ca.wmcd.routiner.R;
 
 /**
  * Created by WalrusCow on 3/15/15.

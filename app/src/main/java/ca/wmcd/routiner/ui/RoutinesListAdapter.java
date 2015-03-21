@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import java.util.Collections;
 import java.util.List;
+
+import ca.wmcd.routiner.data.Routine;
 
 /**
  * Created by WalrusCow on 3/19/15.

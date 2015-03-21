@@ -7,7 +7,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ca.wmcd.routiner.RoutineCreatorView
+    <ca.wmcd.routiner.ui.RoutineCreatorView
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import ca.wmcd.routiner.R;
+import ca.wmcd.routiner.data.Routine;
 
 /**
  * Created by WalrusCow on 3/19/15.

@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -6,6 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 import java.util.List;
+
+import ca.wmcd.routiner.data.Routine;
+import ca.wmcd.routiner.data.RoutineDatabase;
 
 /**
  * Created by WalrusCow on 3/19/15.

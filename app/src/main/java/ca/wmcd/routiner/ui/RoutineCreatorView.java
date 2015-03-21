@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.ui;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -15,6 +15,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.InjectViews;
 import butterknife.OnClick;
+import ca.wmcd.routiner.R;
+import ca.wmcd.routiner.data.Routine;
+import ca.wmcd.routiner.data.RoutineDatabase;
+import ca.wmcd.routiner.data.RoutineNotifierService;
 
 /**
  * Created by WalrusCow on 3/15/15.

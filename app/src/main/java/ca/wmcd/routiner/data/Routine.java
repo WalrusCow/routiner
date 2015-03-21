@@ -1,4 +1,4 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.data;
 
 /**
  * Created by WalrusCow on 3/18/15.

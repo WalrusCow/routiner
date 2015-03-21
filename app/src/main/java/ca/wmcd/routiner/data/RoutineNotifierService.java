@@ -1,10 +1,12 @@
-package ca.wmcd.routiner;
+package ca.wmcd.routiner.data;
 
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+
+import ca.wmcd.routiner.R;
 
 /**
  * Created by WalrusCow on 3/15/15.
