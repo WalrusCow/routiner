@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <TextView
-        android:id="@+id/routine_goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/routine_title_text"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:textSize="25sp"
-        />
+        style="@style/RoutineViewTitle"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/routine_title_text"
+        android:layout_centerHorizontal="true">
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_sunday"
+            style="@style/WeekdayCircle"
+            app:weekday="sunday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_monday"
+            style="@style/WeekdayCircle"
+            app:weekday="monday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_tuesday"
+            style="@style/WeekdayCircle"
+            app:weekday="tuesday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_wednesday"
+            style="@style/WeekdayCircle"
+            app:weekday="wednesday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_thursday"
+            style="@style/WeekdayCircle"
+            app:weekday="thursday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_friday"
+            style="@style/WeekdayCircle"
+            app:weekday="friday"/>
+
+        <ca.wmcd.routiner.ui.WeekdayCircleView
+            android:id="@+id/weekday_saturday"
+            style="@style/WeekdayCircle"
+            app:weekday="saturday"/>
+    </LinearLayout>
+
 </merge>

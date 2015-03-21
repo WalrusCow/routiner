@@ -55,7 +55,7 @@ public class RoutineCreatorView extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.view_routine_creator, this);
-        ButterKnife.inject(this, this);
+        ButterKnife.inject(this);
     }
 
     @OnClick(R.id.create_routine)

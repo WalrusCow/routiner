@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="WeekdaySelectorView">
+    <declare-styleable name="WeekdayCircleView">
         <attr name="weekday" format="enum">
             <enum name="sunday" value="0"/>
             <enum name="monday" value="1"/>
@@ -10,5 +10,6 @@
             <enum name="friday" value="5"/>
             <enum name="saturday" value="6"/>
         </attr>
+        <attr name="selected" format="boolean" />
     </declare-styleable>
 </resources>

@@ -15,7 +15,7 @@ import ca.wmcd.routiner.data.Routine;
  * Display a routine as in a list
  */
 public class RoutineView extends RelativeLayout {
-    @InjectView(R.id.routine_goal) TextView routineGoalView;
+    @InjectView(R.id.routine_title_text) TextView routineTitleView;
 
     public RoutineView(Context context) {
         super(context);
@@ -38,13 +38,34 @@ public class RoutineView extends RelativeLayout {
         init();
     }
 
+    private String formatTimeString(int timeMin) {
+        // Special times
+        if (timeMin == 0) return "midnight";
+        if (timeMin == 60 * 12) return "noon";
+
+        int hours = timeMin / 60;
+        boolean am = hours < 12;
+        int mins = timeMin % 60;
+
+        if (hours > 12) {
+            hours -= 12;
+        }
+
+        return Integer.toString(hours) + ":" + String.format("%02d", mins) + " " + (am ? "am" : "pm");
+    }
+
     public void setRoutine(Routine routine) {
-        // Update this view to show the specified routine
-        routineGoalView.setText(routine.goal);
+        // Capitalize the first character in the goal
+        String goal = routine.goal.substring(0, 1).toUpperCase();
+        goal += routine.goal.substring(1);
+
+        String timeString = formatTimeString(routine.timeMin);
+        String titleString = goal + " at " + timeString;
+        routineTitleView.setText(titleString);
     }
 
     private void init() {
         inflate(getContext(), R.layout.view_routine, this);
-        ButterKnife.inject(this, this);
+        ButterKnife.inject(this);
     }
 }

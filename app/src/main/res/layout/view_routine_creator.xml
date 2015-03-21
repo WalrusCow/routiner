@@ -36,37 +36,37 @@
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_sunday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="sunday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_monday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="monday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_tuesday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="tuesday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_wednesday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="wednesday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_thursday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="thursday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_friday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="friday"/>
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
             android:id="@+id/weekday_saturday"
-            style="@style/WeekdaySelector"
+            style="@style/WeekdayCircle.Selector"
             app:weekday="saturday"/>
     </LinearLayout>
 

@@ -1,16 +1,26 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light"/>
 
-    <style name="WeekdaySelector">
-        <item name="android:layout_height">@dimen/weekday_selector_size</item>
-        <item name="android:layout_width">@dimen/weekday_selector_size</item>
-        <item name="android:layout_marginLeft">@dimen/weekday_selector_margin</item>
-        <item name="android:layout_marginRight">@dimen/weekday_selector_margin</item>
+    <style name="WeekdayCircle">
+        <item name="android:layout_height">@dimen/weekday_circle_size</item>
+        <item name="android:layout_width">@dimen/weekday_circle_size</item>
+        <item name="android:layout_marginLeft">@dimen/weekday_circle_margin</item>
+        <item name="android:layout_marginRight">@dimen/weekday_circle_margin</item>
 
-        <item name="android:padding">@dimen/weekday_selector_padding</item>
+        <item name="android:padding">@dimen/weekday_circle_padding</item>
         <item name="android:background">@drawable/weekday_background</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="WeekdayCircle.Selector">
         <item name="android:clickable">true</item>
+        <item name="selected">true</item>
+    </style>
+
+    <style name="RoutineViewTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">35sp</item>
     </style>
 </resources>
