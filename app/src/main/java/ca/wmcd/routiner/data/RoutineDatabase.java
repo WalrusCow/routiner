@@ -131,7 +131,13 @@ public class RoutineDatabase {
             else
                 values.put(ROUTINES_KEY_DAY_INTERVAL, routine.dayInterval);
 
-            db.insert(ROUTINES_TABLE_NAME, null, values);
+            // Update or insert as necessary.
+            if (routine.id != null) {
+                db.update(ROUTINES_TABLE_NAME, values, ROUTINES_KEY_ID + " = " + routine.id, null);
+            }
+            else {
+                db.insert(ROUTINES_TABLE_NAME, null, values);
+            }
         }
     }
 

@@ -6,4 +6,6 @@
     <dimen name="weekday_circle_padding">10dp</dimen>
     <dimen name="weekday_circle_margin">3dp</dimen>
     <dimen name="weekday_circle_size">40dp</dimen>
+
+    <dimen name="corner_radius">3dp</dimen>
 </resources>

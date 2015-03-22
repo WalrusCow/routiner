@@ -16,8 +16,7 @@ import ca.wmcd.routiner.data.Routine;
 import ca.wmcd.routiner.data.RoutineDatabase;
 
 /**
- * Created by WalrusCow on 3/15/15.
- * View to create a new routine
+ * Created by WalrusCow on 3/15/15. View to create a new routine
  */
 public class RoutineCreatorView extends LinearLayout {
     @InjectViews(
@@ -26,6 +25,7 @@ public class RoutineCreatorView extends LinearLayout {
     List<WeekdaySelectorView> weekdayViews;
 
     @InjectView(R.id.routine_goal_input) EditText goalInput;
+    private Routine editRoutine;
 
     public RoutineCreatorView(Context context) {
         super(context);
@@ -53,6 +53,15 @@ public class RoutineCreatorView extends LinearLayout {
         ButterKnife.inject(this);
     }
 
+    public void editRoutine(Routine routine) {
+        // Set a routine that we are editing
+        editRoutine = routine;
+        for (WeekdaySelectorView weekdayView : weekdayViews) {
+            weekdayView.setSelected(routine.weekdaySelected(weekdayView.weekday));
+        }
+        goalInput.setText(routine.goal);
+    }
+
     @OnClick(R.id.create_routine)
     public void createRoutine() {
         Routine routine = new Routine();
@@ -77,12 +86,17 @@ public class RoutineCreatorView extends LinearLayout {
             return;
         }
 
+        if (editRoutine != null) {
+            routine.id = editRoutine.id;
+        }
+
         Context context = getContext();
         RoutineDatabase.save(context, routine);
 
 //        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 //        PendingIntent intent = PendingIntent.getService(
-//                context, 1, new Intent(context, RoutineNotifierService.class), PendingIntent.FLAG_CANCEL_CURRENT);
+//                context, 1, new Intent(context, RoutineNotifierService.class),
+// PendingIntent.FLAG_CANCEL_CURRENT);
 //
 //        // Five seconds from now
 //        long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;
