@@ -21,6 +21,7 @@ public class RoutineDatabase {
 
     // Routines table
     private static final String ROUTINES_TABLE_NAME = "routines";
+    private static final String ROUTINES_KEY_ID = "id";
     private static final String ROUTINES_KEY_GOAL = "goal";
     private static final String ROUTINES_KEY_WEEKDAYS = "weekdays";
     private static final String ROUTINES_KEY_DAY_INTERVAL = "day_interval";
@@ -70,6 +71,7 @@ public class RoutineDatabase {
             int weekdaysKey = cursor.getColumnIndex(ROUTINES_KEY_WEEKDAYS);
             int dayIntervalKey = cursor.getColumnIndex(ROUTINES_KEY_DAY_INTERVAL);
             int timeKey = cursor.getColumnIndex(ROUTINES_KEY_TIME);
+            int idKey = cursor.getColumnIndex(ROUTINES_KEY_ID);
 
             LinkedList<Routine> routines = new LinkedList<>();
             while (!cursor.isAfterLast()) {
@@ -80,6 +82,7 @@ public class RoutineDatabase {
                     routine.dayInterval = cursor.getInt(dayIntervalKey);
                 routine.goal = cursor.getString(goalKey);
                 routine.timeMin = cursor.getInt(timeKey);
+                routine.id = cursor.getInt(idKey);
                 routines.add(routine);
                 cursor.moveToNext();
             }
@@ -148,6 +151,7 @@ public class RoutineDatabase {
 
         private static final String ROUTINES_TABLE_CREATE =
                 "CREATE TABLE IF NOT EXISTS " + ROUTINES_TABLE_NAME + "(" +
+                ROUTINES_KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 ROUTINES_KEY_GOAL + " TEXT, " +
                 ROUTINES_KEY_WEEKDAYS + " INTEGER, " +
                 ROUTINES_KEY_DAY_INTERVAL + " INTEGER, " +
