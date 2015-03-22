@@ -1,6 +1,8 @@
 package ca.wmcd.routiner.ui;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.NavUtils;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -92,6 +94,9 @@ public class RoutineCreatorView extends LinearLayout {
 
         Context context = getContext();
         RoutineDatabase.save(context, routine);
+
+        // Done, so close this activity
+        NavUtils.navigateUpFromSameTask((Activity) context);
 
 //        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 //        PendingIntent intent = PendingIntent.getService(
