@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import ca.wmcd.routiner.R;
 
 /**
@@ -55,11 +54,6 @@ public class WeekdayCircleView extends TextView {
 
         // Default doesn't work in XML
         if (selected) setSelected(true);
-    }
-
-    @OnClick
-    public void onClick() {
-        setSelected(!isSelected());
     }
 }
 
