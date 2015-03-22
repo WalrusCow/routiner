@@ -1,14 +1,10 @@
 package ca.wmcd.routiner.ui;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -18,7 +14,6 @@ import butterknife.OnClick;
 import ca.wmcd.routiner.R;
 import ca.wmcd.routiner.data.Routine;
 import ca.wmcd.routiner.data.RoutineDatabase;
-import ca.wmcd.routiner.data.RoutineNotifierService;
 
 /**
  * Created by WalrusCow on 3/15/15.
@@ -67,19 +62,30 @@ public class RoutineCreatorView extends LinearLayout {
                 routine.setWeekdaySelected(weekdayView.weekday, true);
             }
         }
+
+        if (routine.weekdayMask == 0) {
+            // No days set
+            // TODO: Notify user
+            return;
+        }
+
         routine.timeMin = 60 * 8;
         routine.goal = goalInput.getText().toString();
+        if (routine.goal.equals("")) {
+            // No goal set
+            // TODO: Notify user
+            return;
+        }
 
         Context context = getContext();
-
         RoutineDatabase.save(context, routine);
 
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        PendingIntent intent = PendingIntent.getService(
-                context, 1, new Intent(context, RoutineNotifierService.class), PendingIntent.FLAG_CANCEL_CURRENT);
-
-        // Five seconds from now
-        long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;
-        am.set(AlarmManager.RTC_WAKEUP, wakeTime, intent);
+//        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//        PendingIntent intent = PendingIntent.getService(
+//                context, 1, new Intent(context, RoutineNotifierService.class), PendingIntent.FLAG_CANCEL_CURRENT);
+//
+//        // Five seconds from now
+//        long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;
+//        am.set(AlarmManager.RTC_WAKEUP, wakeTime, intent);
     }
 }
