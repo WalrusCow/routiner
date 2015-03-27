@@ -18,7 +18,8 @@ import ca.wmcd.routiner.data.Routine;
 import ca.wmcd.routiner.data.RoutineDatabase;
 
 /**
- * Created by WalrusCow on 3/15/15. View to create a new routine
+ * Created by WalrusCow on 3/15/15.
+ * View to create a new routine
  */
 public class RoutineCreatorView extends LinearLayout {
     @InjectViews(
@@ -81,10 +82,11 @@ public class RoutineCreatorView extends LinearLayout {
         }
 
         routine.timeMin = 60 * 8;
-        routine.goal = goalInput.getText().toString();
+        routine.goal = goalInput.getText().toString().trim();
         if (routine.goal.equals("")) {
             // No goal set
             // TODO: Notify user
+            goalInput.setError("Required");
             return;
         }
 

@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 
 import java.util.List;
 
+import ca.wmcd.routiner.Callback;
 import ca.wmcd.routiner.data.Routine;
 import ca.wmcd.routiner.data.RoutineDatabase;
 
@@ -31,7 +32,7 @@ public class RoutinesListView extends RecyclerView {
     }
 
     public RoutinesListView(Context context, AttributeSet attrs, int defStyleAttr,
-                               int defStyleRes) {
+                            int defStyleRes) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -44,7 +45,7 @@ public class RoutinesListView extends RecyclerView {
     private void init() {
         setLayoutManager(new LinearLayoutManager(getContext()));
         setAdapter(new RoutinesListAdapter());
-        RoutineDatabase.getRoutines(getContext(), new RoutineDatabase.GetRoutinesCallback() {
+        RoutineDatabase.getRoutines(getContext(), new Callback<List<Routine>>() {
             @Override
             public void call(List<Routine> routines) {
                 RoutinesListAdapter adapter = getAdapter();

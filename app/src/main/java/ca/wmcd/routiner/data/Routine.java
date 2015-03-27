@@ -3,8 +3,11 @@ package ca.wmcd.routiner.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
+
 /**
- * Created by WalrusCow on 3/18/15. A Routine created by the user.
+ * Created by WalrusCow on 3/18/15.
+ * A Routine created by the user.
  */
 public class Routine implements Parcelable {
     // Special values for `time` field
@@ -36,6 +39,8 @@ public class Routine implements Parcelable {
     // Time in minutes from midnight the routine is due
     // Could also be one of a few special values (see TIME_*)
     public int timeMin;
+    // Timestamp when this routine is scheduled to happen
+    public Long scheduledTime;
 
     public Integer id;
 
@@ -77,5 +82,62 @@ public class Routine implements Parcelable {
         dest.writeValue(weekdayMask == null ? dayInterval : weekdayMask);
         dest.writeInt(timeMin);
         dest.writeValue(id);
+    }
+
+    /**
+     * Determine the next time this routine will run. This time is always in the future.
+     *
+     * @return timestamp of next run
+     */
+    public long getNextScheduledTime() {
+        Calendar calendar = Calendar.getInstance();
+        long now = calendar.getTimeInMillis();
+
+        if (scheduledTime != null) {
+            calendar.setTimeInMillis(scheduledTime);
+        }
+
+        // Set the time to our granularity
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.HOUR, timeMin / 60);
+        calendar.set(Calendar.MINUTE, timeMin % 60);
+
+        long nextTime = calendar.getTimeInMillis();
+        if (now < nextTime) {
+            // time is in the future
+            return nextTime;
+        }
+
+        if (dayInterval != null) {
+            calendar.add(Calendar.DAY_OF_YEAR, dayInterval);
+        }
+        else {
+            // The weekday that was scheduled last time (calendar counts from 1)
+            int weekday = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+
+            // Find the *next* selected weekday
+            for (int interval = 1; interval <= 7; ++interval) {
+                if (weekdaySelected((weekday + interval) % 7)) {
+                    // Set the calendar to the proper day
+                    calendar.add(Calendar.DAY_OF_YEAR, interval);
+                    break;
+                }
+            }
+        }
+
+        nextTime = calendar.getTimeInMillis();
+
+        // After using the interval we are still in the past. Just restart the interval.
+        // (This should rarely happen. Only if a phone is off for an extended period of time
+        // or something.)
+        if (nextTime <= now) {
+            Calendar nowCal = Calendar.getInstance();
+            nowCal.add(Calendar.DAY_OF_YEAR, 1);
+            scheduledTime = nowCal.getTimeInMillis();
+            return getNextScheduledTime();
+        }
+
+        return nextTime;
     }
 }
