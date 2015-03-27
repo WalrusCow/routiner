@@ -1,7 +1,10 @@
 package ca.wmcd.routiner.data;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -43,9 +46,34 @@ public class RoutineDatabase {
      * @param routine
      *         The routine to save to the database.
      */
-    public static void save(Context context, Routine routine) {
+    public static void save(final Context context, final Routine routine) {
         Thread saveThread = new RoutineSaveThread(context, routine);
         saveThread.start();
+
+        // Schedule the routine if we should
+        getRoutines(context, new Callback<List<Routine>>() {
+            @Override
+            public void call(List<Routine> routines) {
+                long min = Integer.MAX_VALUE;
+                for (Routine routine : routines) {
+                    min = Math.min(min, routine.scheduledTime);
+                }
+                // Equality because we have a race condition with the save thread
+                if (min >= routine.scheduledTime) {
+                    // The new routine is scheduled the soonest
+                    scheduleRoutine(context, routine);
+                }
+            }
+        });
+    }
+
+    private static void scheduleRoutine(Context context, Routine routine) {
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent intent = PendingIntent.getService(
+                context, 1, new Intent(context, RoutineNotifierService.class),
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
+        am.set(AlarmManager.RTC_WAKEUP, routine.scheduledTime, intent);
     }
 
     public static void getRoutines(Context context, Callback<List<Routine>> callback) {
@@ -162,7 +190,7 @@ public class RoutineDatabase {
             ContentValues values = new ContentValues(3);
             values.put(ROUTINES_KEY_GOAL, routine.goal);
             values.put(ROUTINES_KEY_TIME, routine.timeMin);
-            values.put(ROUTINES_KEY_SCHEDULED, routine.getNextScheduledTime());
+            values.put(ROUTINES_KEY_SCHEDULED, routine.scheduledTime);
             if (routine.weekdayMask != null)
                 values.put(ROUTINES_KEY_WEEKDAYS, routine.weekdayMask);
             else

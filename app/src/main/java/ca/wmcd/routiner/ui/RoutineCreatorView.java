@@ -94,6 +94,7 @@ public class RoutineCreatorView extends LinearLayout {
             routine.id = editRoutine.id;
         }
 
+        routine.scheduledTime = routine.getNextScheduledTime();
         Context context = getContext();
         RoutineDatabase.save(context, routine);
 
