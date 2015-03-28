@@ -100,7 +100,7 @@ public class Routine implements Parcelable {
         // Set the time to our granularity
         calendar.set(Calendar.MILLISECOND, 0);
         calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.HOUR, timeMin / 60);
+        calendar.set(Calendar.HOUR_OF_DAY, timeMin / 60);
         calendar.set(Calendar.MINUTE, timeMin % 60);
 
         long nextTime = calendar.getTimeInMillis();

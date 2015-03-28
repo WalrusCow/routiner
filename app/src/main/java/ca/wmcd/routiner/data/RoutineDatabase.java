@@ -17,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ca.wmcd.routiner.Callback;
+import ca.wmcd.routiner.Util;
 
 /**
  * Created by WalrusCow on 3/18/15.
@@ -54,7 +55,7 @@ public class RoutineDatabase {
         getRoutines(context, new Callback<List<Routine>>() {
             @Override
             public void call(List<Routine> routines) {
-                long min = Integer.MAX_VALUE;
+                long min = Long.MAX_VALUE;
                 for (Routine routine : routines) {
                     min = Math.min(min, routine.scheduledTime);
                 }
@@ -191,6 +192,9 @@ public class RoutineDatabase {
             values.put(ROUTINES_KEY_GOAL, routine.goal);
             values.put(ROUTINES_KEY_TIME, routine.timeMin);
             values.put(ROUTINES_KEY_SCHEDULED, routine.scheduledTime);
+
+            Util.logTime("Saving routine with time ", routine.scheduledTime);
+
             if (routine.weekdayMask != null)
                 values.put(ROUTINES_KEY_WEEKDAYS, routine.weekdayMask);
             else
