@@ -62,13 +62,13 @@ public class RoutineDatabase {
                 // Equality because we have a race condition with the save thread
                 if (min >= routine.scheduledTime) {
                     // The new routine is scheduled the soonest
-                    scheduleRoutine(context, routine);
+                    scheduleRoutineNotification(context, routine);
                 }
             }
         });
     }
 
-    private static void scheduleRoutine(Context context, Routine routine) {
+    public static void scheduleRoutineNotification(Context context, Routine routine) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent intent = PendingIntent.getService(
                 context, 1, new Intent(context, RoutineNotifierService.class),
@@ -82,6 +82,19 @@ public class RoutineDatabase {
         getTask.execute(context);
     }
 
+    public static void getNextScheduledRoutine(Context context, final Callback<Routine> callback) {
+        GetRoutinesTask getTask = new GetAllRoutinesTask(new Callback<List<Routine>>() {
+            @Override
+            public void call(List<Routine> data) {
+                callback.call(data.get(0));
+            }
+        });
+        getTask.execute(context);
+    }
+
+    /**
+     * Get a list of all routines whose schedules are due at or before the current time.
+     */
     public static void getScheduledRoutines(Context context, Callback<List<Routine>> callback) {
         GetRoutinesTask getTask = new GetScheduledRoutinesTask(callback);
         getTask.execute(context);
@@ -164,7 +177,8 @@ public class RoutineDatabase {
 
         @Override
         protected Cursor query(SQLiteDatabase db) {
-            return db.query(ROUTINES_TABLE_NAME, null, null, null, null, null, null);
+            return db.query(ROUTINES_TABLE_NAME, null, null, null, null, null,
+                            ROUTINES_KEY_SCHEDULED + " ASC");
         }
     }
 
