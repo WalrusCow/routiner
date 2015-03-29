@@ -8,4 +8,6 @@
     <dimen name="weekday_circle_size">40dp</dimen>
 
     <dimen name="corner_radius">3dp</dimen>
+
+    <dimen name="font_size">25sp</dimen>
 </resources>

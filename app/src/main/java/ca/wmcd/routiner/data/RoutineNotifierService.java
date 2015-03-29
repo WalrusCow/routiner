@@ -11,6 +11,7 @@ import java.util.List;
 
 import ca.wmcd.routiner.Callback;
 import ca.wmcd.routiner.R;
+import timber.log.Timber;
 
 /**
  * Created by WalrusCow on 3/15/15.
@@ -43,9 +44,10 @@ public class RoutineNotifierService extends Service {
             @Override
             public void call(List<Routine> routines) {
                 for (Routine routine : routines) {
+                    Timber.d("Notifying for routine %s", routine.goal);
                     builder.setContentTitle("It's time!");
                     builder.setContentText("It's time to " + routine.goal);
-                    nm.notify(1, builder.build());
+                    nm.notify(routine.id, builder.build());
 
                     routine.scheduledTime = routine.getNextScheduledTime();
                     RoutineDatabase.save(context, routine);

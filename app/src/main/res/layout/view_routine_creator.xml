@@ -2,39 +2,36 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/routine_goal_input_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:labelFor="@+id/routine_goal_input"
+        android:text="@string/routine_goal_label"
+        style="@style/RoutineCreatorText.GoalLabel"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:labelFor="@+id/routine_goal_input"
-            android:text="@string/routine_goal_label"/>
-
-        <EditText
-            android:id="@id/routine_goal_input"
-            android:hint="eat tomatoes"
-            android:inputType="textShortMessage"
-            android:maxLines="1"
-            android:maxLength="30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-    </LinearLayout>
+    <EditText
+        android:id="@id/routine_goal_input"
+        android:layout_toRightOf="@id/routine_goal_input_label"
+        android:layout_alignTop="@id/routine_goal_input_label"
+        android:hint="eat tomatoes"
+        style="@style/RoutineCreatorText.GoalInput"/>
 
     <TextView
+        android:id="@+id/routine_weekday_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/routine_time_weekdays"/>
+        android:layout_below="@id/routine_goal_input"
+        android:text="@string/routine_time_weekdays"
+        style="@style/RoutineCreatorText"/>
 
+    <!-- Weekday selector -->
     <LinearLayout
+        android:id="@+id/routine_weekday_container"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/routine_weekday_label"
         android:layout_centerHorizontal="true">
 
         <ca.wmcd.routiner.ui.WeekdaySelectorView
@@ -75,6 +72,7 @@
 
     <Button
         android:id="@+id/create_routine"
+        android:layout_below="@id/routine_weekday_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/routine_create_button_text"

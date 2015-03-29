@@ -74,6 +74,7 @@ public class RoutineDatabase {
                 context, 1, new Intent(context, RoutineNotifierService.class),
                 PendingIntent.FLAG_CANCEL_CURRENT);
 
+        Util.logTime("Scheduling routine with time ", routine.scheduledTime);
         am.set(AlarmManager.RTC_WAKEUP, routine.scheduledTime, intent);
     }
 
@@ -143,6 +144,7 @@ public class RoutineDatabase {
             routineArrayList.addAll(routines);
 
             cursor.close();
+            db.close();
             return routineArrayList;
         }
 
@@ -164,7 +166,7 @@ public class RoutineDatabase {
         protected Cursor query(SQLiteDatabase db) {
             long now = new Date().getTime();
             return db.query(ROUTINES_TABLE_NAME, null,
-                            ROUTINES_KEY_SCHEDULED + " >= " + Long.toString(now),
+                            ROUTINES_KEY_SCHEDULED + " <= " + Long.toString(now),
                             null, null, null,
                             ROUTINES_KEY_SCHEDULED + " ASC");
         }
@@ -222,6 +224,7 @@ public class RoutineDatabase {
             else {
                 db.insert(ROUTINES_TABLE_NAME, null, values);
             }
+            db.close();
         }
     }
 

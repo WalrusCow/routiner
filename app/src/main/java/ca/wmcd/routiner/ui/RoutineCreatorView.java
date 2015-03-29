@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.v4.app.NavUtils;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import ca.wmcd.routiner.data.RoutineDatabase;
  * Created by WalrusCow on 3/15/15.
  * View to create a new routine
  */
-public class RoutineCreatorView extends LinearLayout {
+public class RoutineCreatorView extends RelativeLayout {
     @InjectViews(
             {R.id.weekday_sunday, R.id.weekday_monday, R.id.weekday_tuesday, R.id.weekday_wednesday,
              R.id.weekday_thursday, R.id.weekday_friday, R.id.weekday_saturday})
@@ -100,14 +100,5 @@ public class RoutineCreatorView extends LinearLayout {
 
         // Done, so close this activity
         NavUtils.navigateUpFromSameTask((Activity) context);
-
-//        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//        PendingIntent intent = PendingIntent.getService(
-//                context, 1, new Intent(context, RoutineNotifierService.class),
-// PendingIntent.FLAG_CANCEL_CURRENT);
-//
-//        // Five seconds from now
-//        long wakeTime = Calendar.getInstance().getTimeInMillis() + 5000;
-//        am.set(AlarmManager.RTC_WAKEUP, wakeTime, intent);
     }
 }
