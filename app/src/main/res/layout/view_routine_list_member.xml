@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ca.wmcd.routiner.ui.RoutineView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+
+    android:paddingBottom="@dimen/routine_view_padding_vertical"
+    android:paddingTop="@dimen/routine_view_padding_vertical"
+    android:paddingLeft="@dimen/routine_view_padding_horizontal"
+    android:paddingRight="@dimen/routine_view_padding_horizontal"
+    android:elevation="@dimen/routine_view_elevation"
+    android:background="@drawable/routine_view_background"
+    />

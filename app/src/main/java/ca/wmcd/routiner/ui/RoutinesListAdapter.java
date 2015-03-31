@@ -1,12 +1,15 @@
 package ca.wmcd.routiner.ui;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Collections;
 import java.util.List;
 
+import ca.wmcd.routiner.R;
 import ca.wmcd.routiner.data.Routine;
 
 /**
@@ -23,7 +26,9 @@ public class RoutinesListAdapter extends RecyclerView.Adapter<RoutinesListAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(new RoutineView(parent.getContext()));
+        LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.view_routine_list_member, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override

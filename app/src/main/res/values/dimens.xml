@@ -1,17 +1,17 @@
 <resources>
-    <dimen name="activity_horizontal_margin">4dp</dimen>
+    <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="weekday_circle_padding">10dp</dimen>
     <dimen name="weekday_circle_margin">3dp</dimen>
     <dimen name="weekday_circle_size">40dp</dimen>
 
-    <dimen name="corner_radius">3dp</dimen>
+    <dimen name="corner_radius">2dp</dimen>
 
     <dimen name="font_size">25sp</dimen>
 
-    <dimen name="routine_view_elevation">5dp</dimen>
+    <dimen name="routine_view_elevation">2dp</dimen>
     <dimen name="routine_view_padding_vertical">10dp</dimen>
     <dimen name="routine_view_padding_horizontal">6dp</dimen>
-    <dimen name="routine_view_vertical_space">10dp</dimen>
+    <dimen name="routine_view_vertical_space">4dp</dimen>
 </resources>

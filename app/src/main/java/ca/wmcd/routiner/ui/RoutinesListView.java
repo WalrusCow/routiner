@@ -47,7 +47,8 @@ public class RoutinesListView extends RecyclerView {
         setLayoutManager(new LinearLayoutManager(getContext()));
         setAdapter(new RoutinesListAdapter());
 
-        int verticalSpace = getResources().getDimensionPixelSize(R.dimen.routine_view_vertical_space);
+        int verticalSpace =
+                getResources().getDimensionPixelSize(R.dimen.routine_view_vertical_space);
         addItemDecoration(new SpaceItemDecoration(verticalSpace));
 
         RoutineDatabase.getRoutines(getContext(), new Callback<List<Routine>>() {
