@@ -2,6 +2,7 @@ package ca.wmcd.routiner.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -95,6 +96,11 @@ public class RoutineView extends RelativeLayout {
     private void init() {
         inflate(getContext(), R.layout.view_routine, this);
         ButterKnife.inject(this);
-        setBackgroundResource(R.drawable.round_border_background);
+        Resources r = getResources();
+        setBackgroundColor(r.getColor(R.color.routine_view_background));
+        setElevation(r.getDimension(R.dimen.routine_view_elevation));
+        int verticalPadding = r.getDimensionPixelSize(R.dimen.routine_view_padding_vertical);
+        int horizontalPadding = r.getDimensionPixelSize(R.dimen.routine_view_padding_horizontal);
+        setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
     }
 }
