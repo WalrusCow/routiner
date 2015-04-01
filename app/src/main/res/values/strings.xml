@@ -5,4 +5,8 @@
     <string name="routine_goal_label">I want to</string>
     <string name="routine_time_weekdays">on these days</string>
     <string name="routine_create_button_text">Finished</string>
+    <string name="routine_goal_hint">eat tomatoes</string>
+
+    <string name="time_selector_am">AM</string>
+    <string name="time_selector_pm">PM</string>
 </resources>

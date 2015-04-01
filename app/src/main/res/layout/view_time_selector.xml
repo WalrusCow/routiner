@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/hour_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        style="@style/TimeSelectorText"/>
+
+    <TextView
+        android:id="@+id/time_selector_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/hour_selector"
+        android:text=":"
+        style="@style/TimeSelectorText"/>
+
+    <TextView
+        android:id="@+id/minute_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/time_selector_colon"
+        style="@style/TimeSelectorText"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/minute_selector"
+        android:layout_alignTop="@id/minute_selector"
+        android:layout_alignBottom="@id/minute_selector"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/am_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_selector_am"
+            style="@style/TimeSelectorText.AmPm"/>
+
+        <TextView
+            android:id="@+id/pm_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_selector_pm"
+            style="@style/TimeSelectorText.AmPm"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</merge>

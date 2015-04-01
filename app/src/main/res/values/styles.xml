@@ -40,4 +40,13 @@
         <item name="android:maxLength">15</item>
         <item name="android:inputType">textShortMessage</item>
     </style>
+
+    <style name="TimeSelectorText">
+        <item name="android:textSize">@dimen/time_selector_font_size</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="TimeSelectorText.AmPm">
+        <item name="android:textSize">@dimen/time_selector_font_size_am_pm</item>
+    </style>
 </resources>

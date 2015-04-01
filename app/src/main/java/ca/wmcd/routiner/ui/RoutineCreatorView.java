@@ -28,6 +28,7 @@ public class RoutineCreatorView extends RelativeLayout {
     List<WeekdaySelectorView> weekdayViews;
 
     @InjectView(R.id.routine_goal_input) EditText goalInput;
+    @InjectView(R.id.time_selector) TimeSelectorView timeSelector;
     private Routine editRoutine;
 
     public RoutineCreatorView(Context context) {
@@ -81,7 +82,7 @@ public class RoutineCreatorView extends RelativeLayout {
             return;
         }
 
-        routine.timeMin = 60 * 8;
+        routine.timeMin = timeSelector.getHour() * 60 + timeSelector.getMinute();
         routine.goal = goalInput.getText().toString().trim();
         if (routine.goal.equals("")) {
             // No goal set

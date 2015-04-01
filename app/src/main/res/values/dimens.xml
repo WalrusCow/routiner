@@ -14,4 +14,7 @@
     <dimen name="routine_view_padding_vertical">10dp</dimen>
     <dimen name="routine_view_padding_horizontal">6dp</dimen>
     <dimen name="routine_view_vertical_space">4dp</dimen>
+
+    <dimen name="time_selector_font_size">60sp</dimen>
+    <dimen name="time_selector_font_size_am_pm">20sp</dimen>
 </resources>
