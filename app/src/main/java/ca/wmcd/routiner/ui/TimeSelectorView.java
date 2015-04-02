@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import ca.wmcd.routiner.R;
 
 /**
@@ -21,6 +22,10 @@ public class TimeSelectorView extends RelativeLayout {
 
     private int hour = 8;
     private int minute = 0;
+    private boolean pm = false;
+
+    private static final float selectedAlpha = 1f;
+    private static final float unselectedAlpha = 0.2f;
 
     public TimeSelectorView(Context context) {
         super(context);
@@ -58,6 +63,18 @@ public class TimeSelectorView extends RelativeLayout {
 
         hourSelector.setText(Integer.toString(hour));
         minuteSelector.setText(String.format("%02d", minute));
+        updateAmPm();
+    }
+
+    @OnClick(R.id.am_pm_container)
+    public void toggleAmPm() {
+        pm = !pm;
+        updateAmPm();
+    }
+
+    private void updateAmPm() {
+        pmSelector.setAlpha(pm ? selectedAlpha : unselectedAlpha);
+        amSelector.setAlpha(!pm ? selectedAlpha : unselectedAlpha);
     }
 
     public int getHour() {

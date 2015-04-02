@@ -12,4 +12,11 @@
         </attr>
         <attr name="selected" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="NumberScroller">
+        <attr name="max_value" format="integer" />
+        <attr name="min_value" format="integer" />
+        <attr name="step" format="integer" />
+        <attr name="digits" format="integer" />
+</declare-styleable>
 </resources>

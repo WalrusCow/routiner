@@ -1,5 +1,8 @@
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light"/>
+
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:textColor">@color/text</item>
+    </style>
 
     <style name="WeekdayCircle">
         <item name="android:layout_height">@dimen/weekday_circle_size</item>

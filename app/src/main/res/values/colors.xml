@@ -3,4 +3,6 @@
     <color name="routine_view_ripple">#d8d8d8</color>
     <color name="routine_view_background">#eee</color>
     <color name="routine_activity_background">#ddd</color>
+
+    <color name="text">#202020</color>
 </resources>

@@ -24,6 +24,7 @@
         style="@style/TimeSelectorText"/>
 
     <LinearLayout
+        android:id="@+id/am_pm_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/minute_selector"
